@@ -23,5 +23,5 @@ https://646f53bbf4802508d0feedd0--serene-bombolone-627e50.netlify.app/
 - React
 - Typescript
 - CSS Modules
-- -Firebase
+- Firebase
 - Webpack
