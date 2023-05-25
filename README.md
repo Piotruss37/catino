@@ -12,6 +12,7 @@ https://catinonet.netlify.app/
 
 ## Features
 
+- Beeing able to create account
 - Form validation (Custom hook)
 - Sending HTTP request (Custom http hook)
 - Swipe left and right (via react-tinder-card)
