@@ -1,6 +1,6 @@
 # React+Typescript Catino App
 
-![App Screenshot](https://646f53bbf4802508d0feedd0--serene-bombolone-627e50.netlify.app/readmeimg.png)
+![App Screenshot](https://catinonet.netlify.app/readmeimg.png)
 
 ## About project
 
@@ -8,7 +8,7 @@ An app that helps cat owners find their friends for their pets.
 
 ## Demo
 
-https://646f53bbf4802508d0feedd0--serene-bombolone-627e50.netlify.app/
+https://catinonet.netlify.app/
 
 ## Features
 
