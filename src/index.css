@@ -1,0 +1,245 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 62.5%;
+}
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: #222831;
+	color: #fff;
+	font-size: 1.6rem;
+	overflow-x: hidden;
+}
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+input,
+button,
+textarea,
+select {
+	font-family: inherit;
+}
+
+button {
+	border: none;
+	cursor: pointer;
+}
+
+textarea {
+	resize: vertical;
+}
+.wrapper {
+	margin: 0 auto;
+	max-width: 1300px;
+	width: 100%;
+	padding: 0 1em;
+}
+.burger-btn {
+	padding: 1em;
+	background: none;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	z-index: 20;
+}
+.burger-btn__box {
+	width: 45px;
+	height: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.burger-btn-line {
+	height: 3px;
+	width: 100%;
+	background-color: #fff;
+	transition: transform 0.3s, opacity 0.2s;
+}
+.opened.burger-btn-line--1 {
+	transform: rotate(45deg) translate(9px, 10px);
+}
+.opened.burger-btn-line--2 {
+	opacity: 0;
+}
+.opened.burger-btn-line--3 {
+	transform: rotate(-45deg) translate(9px, -10px);
+}
+.login-button {
+	padding: 0.7em 2.5em;
+	margin-top: 1em;
+	z-index: 20;
+	background-color: transparent;
+	color: #fff;
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	height: 40px;
+	border: 1px solid #fff;
+	display: inline-block;
+	border-radius: 12px;
+}
+.signup {
+	padding: 0.5em 2em;
+	margin-top: 1em;
+	color: #fff;
+	font-size: 1.7rem;
+	background-color: #00adb5;
+	border-radius: 12px;
+}
+.signup:disabled {
+	background-color: #6e9c9e;
+	cursor: not-allowed;
+}
+.backdrop {
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #00000077;
+	z-index: 5;
+}
+.header__main {
+	background-image: url('./images/header-small.jpg');
+}
+.how-section {
+	background-image: url('./images/how-small.jpg');
+}
+.how-section::after {
+	background-color: #0000006e !important;
+}
+.login-page {
+	background-image: url('./images/login-small.jpg');
+}
+.signup-page {
+	background-image: url('./images/signup-small.jpg');
+	min-height: 120vh !important;
+}
+.profile-page {
+	background-image: url('./images/profile-small.jpg');
+}
+.swipe-page {
+	background-image: url('./images/swipe-small.jpg');
+	min-height: 120vh !important;
+}
+.liked-page {
+	background-image: url('./images/liked-small.jpg');
+}
+@media (min-width: 992px) {
+	.burger-btn {
+		left: 100px;
+	}
+	.header__main {
+		background-image: url('./images/header-big.jpg');
+	}
+	.burger-btn.opened {
+		transition: transform 0.3s;
+		transform: translateX(200px);
+	}
+	.how-section {
+		background-image: url('./images/how-big.jpg');
+		background-position: center !important;
+	}
+	.login-page {
+		background-image: url('./images/login-big.jpg');
+	}
+	.signup-page {
+		background-image: url('./images/signup-big.jpg');
+	}
+	.profile-page {
+		background-image: url('./images/profile-big.jpg');
+		background-position: center !important;
+		overflow: hidden;
+	}
+	.swipe-page {
+		background-image: url('./images/swipe-big.jpg');
+	}
+	.liked-page {
+		background-image: url('./images/liked-big.jpg');
+	}
+}
+.invalid {
+	border: 1px solid rgb(255, 57, 57) !important;
+	margin-bottom: 0;
+}
+
+div {
+	margin-bottom: 0;
+}
+div:has(.invalid) {
+	margin-bottom: 1em;
+}
+.logged__links {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.logged__links a {
+	margin: 0.5em 0;
+	color: #ffffff;
+}
+.logged__links a:first-of-type {
+	margin-top: 1.1em;
+}
+.logged__btn {
+	background-color: #049ea7;
+	border-radius: 5px;
+	padding: 0.5em 1em;
+}
+.logged__btn:nth-of-type(2) {
+	background-color: transparent;
+	border: 1px solid #fff;
+}
+.modal {
+	width: 100%;
+	max-width: 300px;
+	border-radius: 10px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	min-height: 350px;
+	padding: 1.5em 2em;
+	background-color: #3b3b3b;
+	z-index: 10;
+	transform: translate(-50%, -50%);
+}
+.swipe-container {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	width: 100%;
+	height: 440px;
+	margin-top: 2em;
+}
+
+.swipe-card {
+	background-color: #3b3b3b;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
+	padding: 20px;
+	max-width: 300px;
+	height: 440px;
+	width: 100%;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.swipe-card img {
+	width: 100%;
+	object-fit: cover;
+	height: 350px;
+	pointer-events: none;
+}
+.swipe-card h3 {
+	padding: 1em;
+}
