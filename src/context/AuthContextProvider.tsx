@@ -80,8 +80,6 @@ const AuthContextProvider = (props: { children: React.ReactNode }) => {
 					})
 				}
 			)
-		} else {
-			setIsLoggedIn(false)
 		}
 	}, [token, getUserData, userData.idToken])
 
@@ -91,8 +89,8 @@ const AuthContextProvider = (props: { children: React.ReactNode }) => {
 	}
 
 	const logoutHandler = () => {
-		toast.dismiss('expired')
 		setIsLoggedIn(false)
+		toast.dismiss('expired')
 		setUserData({
 			idToken: '',
 			expiresIn: '',

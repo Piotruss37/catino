@@ -89,6 +89,7 @@ const AuthForm = (props: { mode?: string }) => {
 		modeLogin = false
 	}
 
+
 	if (modeLogin) {
 		if (passwordIsValid && emailIsValid) {
 			formIsValid = true
@@ -152,6 +153,7 @@ const AuthForm = (props: { mode?: string }) => {
 							localId: data.localId,
 							photoUrl: data.profilePicture,
 						}
+
 						setLoginData(formatedData)
 						authCtx.updateUserData(formatedData)
 					}
@@ -160,10 +162,12 @@ const AuthForm = (props: { mode?: string }) => {
 		}
 	}
 	const navigateToHomePage = useCallback(() => {
+		authCtx.loginHandler()
 		toast.dismiss('expired')
 
 		const expiration = new Date()
 		expiration.setHours(expiration.getHours() + 1)
+
 		localStorage.setItem('expiration', expiration.toISOString())
 
 		setTimeout(() => {
@@ -172,7 +176,7 @@ const AuthForm = (props: { mode?: string }) => {
 		}, 2000)
 
 		toast.dismiss('error')
-	}, [navigate])
+	}, [navigate, authCtx])
 
 	useEffect(() => {
 		if (hasError || hasErrorProfileData || hasErrorLogin) {
@@ -267,7 +271,9 @@ const AuthForm = (props: { mode?: string }) => {
 	}, [signupData, urlValue, usernameValue, sendProfileData, authCtx, sendDataToDatabase, navigateToHomePage])
 
 	useEffect(() => {
-		if (typeof loginData !== 'undefined' || typeof signupData !== 'undefined') {
+		if (typeof loginData !== 'undefined') {
+			authCtx.loginHandler()
+		} else if (typeof signupData !== 'undefined') {
 			authCtx.loginHandler()
 		}
 	}, [loginData, signupData, authCtx])

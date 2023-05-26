@@ -82,7 +82,6 @@ textarea {
 	position: absolute;
 	top: 1em;
 	right: 1em;
-	height: 40px;
 	border: 1px solid #fff;
 	display: inline-block;
 	border-radius: 12px;
@@ -136,6 +135,9 @@ textarea {
 .liked-page {
 	background-image: url('./images/liked-small.jpg');
 }
+.stats-page {
+	background-image: url('./images/stats-small.jpg');
+}
 @media (min-width: 992px) {
 	.burger-btn {
 		left: 100px;
@@ -167,6 +169,9 @@ textarea {
 	}
 	.liked-page {
 		background-image: url('./images/liked-big.jpg');
+	}
+	.stats-page {
+		background-image: url('./images/stats-big.jpg');
 	}
 }
 .invalid {
@@ -219,7 +224,8 @@ div:has(.invalid) {
 	flex-direction: column;
 	overflow: hidden;
 	width: 100%;
-	height: 440px;
+	min-height: 440px;
+	max-height: 440px;
 	margin-top: 2em;
 }
 
@@ -229,7 +235,7 @@ div:has(.invalid) {
 	border-radius: 8px;
 	padding: 20px;
 	max-width: 300px;
-	height: 440px;
+	min-height: 440px;
 	width: 100%;
 	margin-bottom: 20px;
 	text-align: center;
@@ -237,7 +243,8 @@ div:has(.invalid) {
 .swipe-card img {
 	width: 100%;
 	object-fit: cover;
-	height: 350px;
+	min-height: 350px;
+	max-height: 350px;
 	pointer-events: none;
 }
 .swipe-card h3 {

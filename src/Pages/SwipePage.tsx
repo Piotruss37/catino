@@ -4,19 +4,13 @@ import useHttp from '../hooks/use-http'
 import { DATABASE_LINK } from '../constants/endpoints'
 import { AuthContext } from '../context/AuthContext'
 import TinderCard from 'react-tinder-card'
-
+import { CardItem } from '../types/CardItem'
 interface Data {
-	[key: string]: DataItem
-}
-
-interface DataItem {
-	displayName: string
-	localId: string
-	photoUrl: string
+	[key: string]: CardItem
 }
 
 const Swipe = () => {
-	const [data, setData] = useState<DataItem[]>([])
+	const [data, setData] = useState<CardItem[]>([])
 	const { isLoading, hasError, didSucceed, sendRequest } = useHttp()
 	const authCtx = useContext(AuthContext)
 
