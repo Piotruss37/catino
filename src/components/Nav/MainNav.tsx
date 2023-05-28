@@ -59,16 +59,6 @@ const MainNav = () => {
 					className={({ isActive }) => {
 						return isActive ? `${classes.active} ${classes.option}` : `${classes.option}`
 					}}
-					to={'/stats'}
-				>
-					<IconDeviceDesktopAnalytics strokeWidth={1} color='white' size={35}></IconDeviceDesktopAnalytics>
-					<p>Stats</p>
-				</NavLink>
-				<NavLink
-					onClick={navCtx.closeNavHandler}
-					className={({ isActive }) => {
-						return isActive ? `${classes.active} ${classes.option}` : `${classes.option}`
-					}}
 					to={'/profile'}
 				>
 					<IconUser strokeWidth={1} color='white' size={35}></IconUser>

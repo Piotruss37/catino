@@ -227,6 +227,7 @@ div:has(.invalid) {
 	min-height: 440px;
 	max-height: 440px;
 	margin-top: 2em;
+	max-width: 270px;
 }
 
 .swipe-card {
@@ -234,11 +235,12 @@ div:has(.invalid) {
 	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 	border-radius: 8px;
 	padding: 20px;
-	max-width: 300px;
+	max-width: 270px;
 	min-height: 440px;
 	width: 100%;
 	margin-bottom: 20px;
 	text-align: center;
+	user-select: none;
 }
 .swipe-card img {
 	width: 100%;
@@ -249,4 +251,32 @@ div:has(.invalid) {
 }
 .swipe-card h3 {
 	padding: 1em;
+	pointer-events: none;
+}
+.iconup {
+	position: absolute;
+	top: 60%;
+	left: 320px;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	visibility: hidden;
+}
+.animated-icon {
+	visibility: visible;
+	animation: blink 2s forwards;
+}
+
+@keyframes blink {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+@media (min-width: 992px) {
+	.iconup {
+		left: 440px;
+		top: 400px;
+	}
 }
