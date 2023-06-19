@@ -1,5 +1,5 @@
 import Header from '../components/Header/Header'
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, useMemo } from 'react'
 import useHttp from '../hooks/use-http'
 import { DATABASE_LINK } from '../constants/endpoints'
 import { AuthContext } from '../context/AuthContext'
@@ -41,7 +41,6 @@ const Swipe = () => {
 		setSwipeDirection(direction)
 		setData(prevData => prevData.filter(item => item.localId !== myIdentifier))
 
-		console.log('card left screen')
 		setTimeout(() => {
 			setIconClasses('iconup')
 		}, 700)
@@ -49,8 +48,7 @@ const Swipe = () => {
 	}
 
 	const handleDirection = (direction: string) => {
-		setIconClasses('iconup')
-		console.log('direction')
+		console.log(direction)
 	}
 
 	return (
@@ -65,7 +63,7 @@ const Swipe = () => {
 								key={item.localId}
 								className='swipe-card'
 								onCardLeftScreen={direction => onCardLeftScreen(item.localId, direction)}
-								onSwipe={direction => handleDirection(direction)}
+								onSwipe={handleDirection}
 								preventSwipe={['up', 'down']}
 							>
 								<img src={item.photoUrl} alt='user avatar' />

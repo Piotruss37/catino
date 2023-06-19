@@ -255,7 +255,7 @@ div:has(.invalid) {
 }
 .iconup {
 	position: absolute;
-	top: 60%;
+	top: 400px;
 	left: 320px;
 	transform: translate(-50%, -50%);
 	opacity: 0;
