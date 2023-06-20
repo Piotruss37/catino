@@ -4,7 +4,7 @@
 
 ## About project
 
-An app that helps cat owners with finding friends for their pets.
+Do You want to find a friend for your cat? This app is for You!
 
 ## Demo
 
