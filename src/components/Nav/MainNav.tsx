@@ -53,6 +53,16 @@ const MainNav = () => {
 					<IconHandMove color='white' size={35} strokeWidth={1}></IconHandMove>
 					<p>Swipe</p>
 				</NavLink>
+				<NavLink
+					onClick={navCtx.closeNavHandler}
+					className={({ isActive }) => {
+						return isActive ? `${classes.active} ${classes.option}` : `${classes.option}`
+					}}
+					to={'/stats'}
+				>
+					<IconDeviceDesktopAnalytics color='white' size={35} strokeWidth={1}></IconDeviceDesktopAnalytics>
+					<p>Stats</p>
+				</NavLink>
 
 				<NavLink
 					onClick={navCtx.closeNavHandler}

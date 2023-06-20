@@ -1,0 +1,17 @@
+.items {
+	display: flex;
+	flex-direction: column;
+}
+.item {
+	background-color: #3b3b3b;
+	width: 200px;
+	margin: 1.5em 0 0em 0;
+	padding: 1.5em 1em 2em 1em;
+	border-radius: 8px;
+}
+.text {
+	margin-bottom: 1em;
+}
+.amount {
+	font-weight: bold;
+}

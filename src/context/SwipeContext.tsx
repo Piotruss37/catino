@@ -1,20 +1,24 @@
 import { createContext } from 'react'
+import { CardItem } from '../types/CardItem'
 
-const defaultContextValue = {
-	swipedLeftAmount: 0,
-	swipedRightAmount: 0,
-	increaseLeft: () => {},
-	increaseRight: () => {},
-	decreaseLeft: () => {},
-	decreaseRight: () => {},
-}
-interface contextType {
+interface SwipeContextType {
+	swipeData: CardItem[]
+	setData: React.Dispatch<React.SetStateAction<CardItem[]>>
 	swipedLeftAmount: number
 	swipedRightAmount: number
-	increaseLeft: () => void
-	decreaseLeft: () => void
-	decreaseRight: () => void
 	increaseRight: () => void
+	increaseLeft: () => void
+	reset: () => void
 }
 
-export const SwipeContext = createContext<contextType>(defaultContextValue)
+const defaultSwipeContextValue = {
+	swipeData: [],
+	swipedLeftAmount: 0,
+	swipedRightAmount: 0,
+	setData: () => {},
+	increaseRight: () => {},
+	increaseLeft: () => {},
+	reset: () => {},
+}
+
+export const SwipeContext = createContext<SwipeContextType>(defaultSwipeContextValue)

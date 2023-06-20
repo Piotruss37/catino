@@ -9,6 +9,7 @@ import { AuthContext } from '../context/AuthContext'
 import { useContext } from 'react'
 import Swipe from '../Pages/SwipePage'
 import UserProfilePage from '../Pages/Profile'
+import StatsPage from '../Pages/StatsPage'
 const BrowserRouter = () => {
 	const authCtx = useContext(AuthContext)
 	const isLoggedIn = authCtx.isLoggedIn
@@ -20,6 +21,10 @@ const BrowserRouter = () => {
 			<Route
 				path='/profile'
 				element={isLoggedIn ? <UserProfilePage></UserProfilePage> : <LoginPage source='protected'></LoginPage>}
+			/>
+			<Route
+				path='/stats'
+				element={isLoggedIn ? <StatsPage></StatsPage> : <LoginPage source='protected'></LoginPage>}
 			/>
 
 			<Route path='/signup' element={<SignupPage />} />

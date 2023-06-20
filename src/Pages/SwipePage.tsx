@@ -1,5 +1,5 @@
 import Header from '../components/Header/Header'
-import { useState, useEffect, useContext, useMemo } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import useHttp from '../hooks/use-http'
 import { DATABASE_LINK } from '../constants/endpoints'
 import { AuthContext } from '../context/AuthContext'
@@ -11,45 +11,72 @@ interface Data {
 	[key: string]: CardItem
 }
 
+let didSwipeAll = false
+let isInitial = true
 const Swipe = () => {
-	const [data, setData] = useState<CardItem[]>([])
 	const [swipeDirection, setSwipeDirection] = useState('')
-	const { isLoading, hasError, didSucceed, sendRequest } = useHttp()
+	const { isLoading, sendRequest } = useHttp()
+	const [isSwiping, setIsSwiping] = useState(false)
 	const [iconClasses, setIconClasses] = useState('iconup')
 	const authCtx = useContext(AuthContext)
 	const swipeCtx = useContext(SwipeContext)
+	const data = swipeCtx.swipeData
 
 	useEffect(() => {
-		sendRequest(`${DATABASE_LINK}/users.json`, {}, (data: Data) => {
-			const transformedData = Object.keys(data).map(item => {
-				return {
-					...data[item],
-				}
-			})
-			const currentUserId = authCtx.userData.localId
+		if (!didSwipeAll && isInitial) {
+			sendRequest(`${DATABASE_LINK}/users.json`, {}, (data: Data) => {
+				const transformedData = Object.keys(data).map(item => {
+					return {
+						...data[item],
+					}
+				})
+				const currentUserId = authCtx.userData.localId
 
-			const dataWithoutUser = transformedData.filter(item => {
-				return item.localId !== currentUserId
-			})
+				const dataWithoutUser = transformedData.filter(item => {
+					return item.localId !== currentUserId
+				})
+				isInitial = false
 
-			setData(dataWithoutUser)
-		})
+				swipeCtx.setData(dataWithoutUser)
+			})
+		}
 	}, [authCtx.userData.localId, sendRequest])
 
-	const onCardLeftScreen = (myIdentifier: string, direction: string) => {
+	const onCardLeftScreen = () => {
 		setIconClasses('iconup animated-icon')
-		setSwipeDirection(direction)
-		setData(prevData => prevData.filter(item => item.localId !== myIdentifier))
 
 		setTimeout(() => {
 			setIconClasses('iconup')
 		}, 700)
-		swipeCtx.increaseLeft()
 	}
 
-	const handleDirection = (direction: string) => {
-		console.log(direction)
+	const handleDirection = (myIdentifier: string, direction: string) => {
+		setIsSwiping(true)
+		setSwipeDirection(direction)
+		setTimeout(() => {
+			setIsSwiping(false)
+			swipeCtx.setData(prevData => {
+				return prevData.filter(item => item.localId !== myIdentifier)
+			})
+		}, 200)
+		setIconClasses('iconup')
 	}
+
+	useEffect(() => {
+		if (data.length === 0 && swipeDirection) {
+			didSwipeAll = true
+		}
+	}, [data, swipeDirection])
+
+	useEffect(() => {
+		if (isSwiping) {
+			if (swipeDirection === 'right') {
+				swipeCtx.increaseRight()
+			} else {
+				swipeCtx.increaseLeft()
+			}
+		}
+	}, [swipeDirection, isSwiping]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<>
@@ -62,8 +89,8 @@ const Swipe = () => {
 							<TinderCard
 								key={item.localId}
 								className='swipe-card'
-								onCardLeftScreen={direction => onCardLeftScreen(item.localId, direction)}
-								onSwipe={handleDirection}
+								onCardLeftScreen={onCardLeftScreen}
+								onSwipe={direction => handleDirection(item.localId, direction)}
 								preventSwipe={['up', 'down']}
 							>
 								<img src={item.photoUrl} alt='user avatar' />
