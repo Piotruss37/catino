@@ -15,14 +15,15 @@ https://catinonet.netlify.app/
 - User is being able to create an account
 - Form validation (Custom hook)
 - Sending HTTP request (Custom http hook)
-- Swipe left and right (via react-tinder-card)
-- Profile data update requests
+- Fully functional cart
+- Quantity increase/decrease
 - Managing token expiration 
 
 ## 🛠 Tech stack used for the project
 
 - React
 - Typescript
+- Next.js
 - CSS Modules
 - Firebase
 - Webpack
